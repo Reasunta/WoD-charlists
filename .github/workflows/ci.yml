@@ -14,8 +14,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Run command on remote server
         uses: D3rHase/ssh-command-action@v0.2.2
-        env:
-          PS_DB_PASSWORD: ${{secrets.PS_DB_PASSWORD}}
         with:
           host: ${{secrets.SSH_HOST}}
           user: ${{secrets.SSH_USER}}
@@ -27,8 +25,8 @@ jobs:
             
             export PS_DB_NAME=wod;
             export PS_DB_USER=wod_superuser;
-            export PS_DB_PASSWORD=$PS_DB_PASSWORD;
+            export ;
             
             docker-compose --file docker-compose.yml down;
-            docker-compose --file docker-compose.yml up -d;
+            PS_DB_PASSWORD=${{secrets.PS_DB_PASSWORD}} docker-compose --file docker-compose.yml up -d;
             docker system prune --all --force;
