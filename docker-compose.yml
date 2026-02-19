@@ -16,7 +16,7 @@ services:
       PGDATA: "/var/lib/postgresql/data/pgdata"
     volumes:
       - ./db/migrations:/docker-entrypoint-initdb.d
-      #- db-data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     healthcheck:
@@ -32,5 +32,5 @@ services:
           cpus: '1'
           memory: 512M
 
-#volumes:
- # db-data:
+volumes:
+  db-data:
