@@ -32,5 +32,4 @@ jobs:
             docker-compose --file docker-compose.yml down;
             docker-compose --file docker-compose.yml --env-file .env up -d;
             docker system prune --all --force;
-            
-            rm .env;
+            rm -f .env;
