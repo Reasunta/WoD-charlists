@@ -14,8 +14,8 @@ services:
       POSTGRES_USER: ${PS_DB_USER}
       POSTGRES_PASSWORD: ${PS_DB_PASSWORD}
       PGDATA: "/var/lib/postgresql/data/pgdata"
-    #volumes:
-      #- ../2. Init Database:/docker-entrypoint-initdb.d
+    volumes:
+      - ./db/migrations:/docker-entrypoint-initdb.d
       #- db-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
