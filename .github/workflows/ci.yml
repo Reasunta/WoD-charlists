@@ -28,5 +28,5 @@ jobs:
             export PS_DB_PASSWORD=abcd;
             
             docker-compose --file docker-compose.yml down;
-            docker-compose --file docker-compose.yml up -d --build;
+            docker-compose --file docker-compose.yml up -d;
             docker system prune --all --force;
