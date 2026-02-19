@@ -27,5 +27,5 @@ jobs:
             export PS_DB_USER=wod_superuser;
             echo PS_DB_PASSWORD=${{ secrets.PS_DB_PASSWORD }} > .env;
             
-            docker-compose --file docker-compose.yml up -d;
+            docker-compose --file docker-compose.yml --env-file .env up -d;
             docker system prune --all --force;

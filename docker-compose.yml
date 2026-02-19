@@ -1,6 +1,5 @@
 version: "3"
-env-file:
-  ./.env
+
 services:
   server:
     build: backend/
