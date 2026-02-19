@@ -10,9 +10,9 @@ services:
   postgres:
     image: postgres:14.8-alpine3.18
     environment:
-      POSTGRES_DB: "wod"
-      POSTGRES_USER: "wod_superuser"
-      POSTGRES_PASSWORD: ${PS_PASSWORD}
+      POSTGRES_DB: ${PS_DB_NAME}
+      POSTGRES_USER: ${PS_DB_USER}
+      POSTGRES_PASSWORD: ${PS_DB_PASSWORD}
       PGDATA: "/var/lib/postgresql/data/pgdata"
     volumes:
       #- ../2. Init Database:/docker-entrypoint-initdb.d
@@ -20,7 +20,7 @@ services:
     ports:
       - "5432:5432"
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U wod_superuser -d $$PS_PASSWORD"]
+      test: [ "CMD-SHELL", "pg_isready -U $$PS_DB_USER -d $$PS_DB_PASSWORD"]
       interval: 10s
       timeout: 5s
       retries: 5

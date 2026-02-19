@@ -22,7 +22,9 @@ jobs:
             cd ${{ secrets.PROJECT_FOLDER }};
             git checkout main;
             git pull;
-            export PS_PASSWORD=1234
+            export PS_DB_NAME=${{secrets.PS_DB_NAME}}
+            export PS_DB_USER=${{secrets.PS_DB_USER}}
+            export PS_DB_PASSWORD=${{secrets.PS_DB_PASSWORD}}
             docker-compose --file docker-compose.yml down;
             docker-compose --file docker-compose.yml up -d;
             docker system prune --all --force;
