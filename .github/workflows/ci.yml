@@ -24,8 +24,8 @@ jobs:
             git pull;
             
             rm -f .env;
-            echo SOME_VAR=abcd > .env;
-            echo PS_DB_PASSWORD=${{ secrets.PS_DB_PASSWORD }} >> .env;
+            
+            echo PS_DB_PASSWORD=${{ secrets.PS_DB_PASSWORD }} > .env;
             echo PS_DB_NAME=${{ secrets.PS_DB_NAME }} >> .env;
             echo PS_DB_USER=${{ secrets.PS_DB_USER }} >> .env;
             
