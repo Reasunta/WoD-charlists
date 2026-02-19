@@ -22,9 +22,10 @@ jobs:
             cd ${{ secrets.PROJECT_FOLDER }};
             git checkout main;
             git pull;
-            export PS_DB_NAME=wod
-            export PS_DB_USER=wod_superuser
-            export PS_DB_PASSWORD=5678
+            
+            export PS_DB_NAME=wod;
+            export PS_DB_USER=wod_superuser;
+            export PS_DB_PASSWORD=abcd;
             
             docker-compose --file docker-compose.yml down;
             docker-compose --file docker-compose.yml up -d;
