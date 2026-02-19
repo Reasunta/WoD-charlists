@@ -3,8 +3,6 @@ version: "3"
 services:
   server:
     build: backend/
-    # Команда, которую нужно запустить после создания образа.
-    # Следующая команда означает запуск "python ./server.py".
     command: node app.js
     ports:
       - 3030:3030

@@ -1,5 +1,5 @@
 FROM node
-WORKDIR /app
-COPY package.json /app
+WORKDIR /backend/app
+COPY package.json /backend/app
 RUN npm install
-COPY . /app
+COPY . /backend/app
