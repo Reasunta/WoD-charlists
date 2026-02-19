@@ -2,7 +2,7 @@ version: "3"
 
 services:
   server:
-    build: .
+    build: backend/
     # Команда, которую нужно запустить после создания образа.
     # Следующая команда означает запуск "python ./server.py".
     command: node app.js
