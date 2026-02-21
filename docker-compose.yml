@@ -8,7 +8,7 @@ services:
       PS_DB_PASSWORD: ${PS_DB_PASSWORD}
       HMAC_PRIVATE_KEY: ${HMAC_PRIVATE_KEY}
     build: backend/
-    command: node app.js
+    command: ./wod-backend
     ports:
       - 3030:3030
 
