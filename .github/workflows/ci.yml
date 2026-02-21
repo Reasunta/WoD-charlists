@@ -31,5 +31,5 @@ jobs:
             
             docker-compose --profile=prod --file docker-compose.yml down;
             docker-compose --profile=prod --file docker-compose.yml --env-file .env up -d --build;
-            docker system prune --all --force;
+            docker system prune --force;
             rm -f .env;
