@@ -2,7 +2,7 @@ version: "3"
 
 services:
   base-backend:
-    container_name: 'backend'
+    profiles: [ 'base' ]
     environment:
       PS_DB_NAME: ${PS_DB_NAME}
       PS_DB_USER: ${PS_DB_USER}
@@ -14,6 +14,7 @@ services:
       - 3030:3030
 
   base-postgres:
+    profiles: [ 'base' ]
     image: postgres:14.8-alpine3.18
     container_name: 'postgres'
     environment:

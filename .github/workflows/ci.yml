@@ -29,7 +29,7 @@ jobs:
             echo PS_DB_NAME=${{ secrets.PS_DB_NAME }} >> .env;
             echo PS_DB_USER=${{ secrets.PS_DB_USER }} >> .env;
             
-            docker-compose --file docker-compose.yml down;
-            docker-compose --profile prod --file docker-compose.yml --env-file .env up -d --build;
+            docker-compose --profile=prod --file docker-compose.yml down;
+            docker-compose --profile=prod --file docker-compose.yml --env-file .env up -d --build;
             docker system prune --all --force;
             rm -f .env;
