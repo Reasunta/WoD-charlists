@@ -1,7 +1,8 @@
 version: "3"
 
 services:
-  server:
+  base-backend:
+    container_name: 'backend'
     environment:
       PS_DB_NAME: ${PS_DB_NAME}
       PS_DB_USER: ${PS_DB_USER}
@@ -12,8 +13,9 @@ services:
     ports:
       - 3030:3030
 
-  postgres:
+  base-postgres:
     image: postgres:14.8-alpine3.18
+    container_name: 'postgres'
     environment:
       POSTGRES_DB: ${PS_DB_NAME}
       POSTGRES_USER: ${PS_DB_USER}
@@ -21,7 +23,6 @@ services:
       PGDATA: "/var/lib/postgresql/data/pgdata"
     volumes:
       - ./db/migrations:/docker-entrypoint-initdb.d
-      - db-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     healthcheck:
@@ -37,5 +38,27 @@ services:
           cpus: '1'
           memory: 512M
 
-volumes:
-  db-data:
+  prod-backend:
+    profiles: [ 'prod' ]
+    extends:
+      service: base-backend
+
+  prod-postgres:
+    profiles: [ 'prod' ]
+    extends:
+      service: base-postgres
+#    volumes:
+#      - db-data:/var/lib/postgresql/data
+
+  local-backend:
+    profiles: [ 'local' ]
+    extends:
+      service: base-backend
+
+  local-postgres:
+    profiles: [ 'local' ]
+    extends:
+      service: base-postgres
+
+#volumes:
+#  db-data:
