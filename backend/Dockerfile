@@ -1,6 +1,6 @@
 FROM golang:1.24.2 as builder
 WORKDIR /backend/app
-COPY go.mod go.sum /backend/app
+COPY go.mod go.sum /backend/app/
 RUN go mod download
 COPY . /backend/app
 
