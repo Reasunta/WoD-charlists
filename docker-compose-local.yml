@@ -8,7 +8,7 @@ services:
       PS_DB_PASSWORD: ${PS_DB_PASSWORD}
       HMAC_PRIVATE_KEY: ${HMAC_PRIVATE_KEY}
     build: backend/
-    command: node app.js
+    command: ./wod-backend
     ports:
       - 3030:3030
 
@@ -21,7 +21,6 @@ services:
       PGDATA: "/var/lib/postgresql/data/pgdata"
     volumes:
       - ./db/migrations:/docker-entrypoint-initdb.d
-      - db-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     healthcheck:
@@ -36,6 +35,3 @@ services:
         limits:
           cpus: '1'
           memory: 512M
-
-volumes:
-  db-data:

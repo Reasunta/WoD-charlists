@@ -1,3 +1,5 @@
 /.idea
 /variables
 /backend/node_modules/
+/.env
+/backend/config/local.properties
